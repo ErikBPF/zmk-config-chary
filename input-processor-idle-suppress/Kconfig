@@ -1,0 +1,5 @@
+config ZMK_INPUT_PROCESSOR_IDLE_SUPPRESS
+    bool "Input processor to suppress events during keyboard activity"
+    default y
+    depends on ZMK_POINTING
+    depends on (!ZMK_SPLIT || ZMK_SPLIT_ROLE_CENTRAL)

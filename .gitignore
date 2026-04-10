@@ -1,0 +1,33 @@
+# Devenv
+.devenv*
+devenv.local.nix
+devenv.local.yaml
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml
+
+# ZMK local build
+.west/
+build/
+modules/
+zephyr/
+zmk/
+bootloader/
+tools/
+
+# keymap-drawer intermediate
+docs/keymap/charybdis_parsed.yaml
+
+# Firmware output
+firmware/
+
+# GSD / bg-shell
+.gsd/
+.bg-shell/
+
+# Nix
+devenv.lock
+result

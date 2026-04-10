@@ -1,0 +1,16 @@
+draw_config:
+  key_h: 56
+  key_w: 56
+  separate_combo_diagrams: false
+
+parse_config:
+  zmk_keymap_file: config/charybdis.keymap
+  layer_names:
+    - Base
+    - Raise
+    - Lower
+    - Multi
+    - Mouse
+    - Snipe
+  zmk_remove_first_columns: 1
+  zmk_remove_last_columns: 1

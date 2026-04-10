@@ -1,0 +1,21 @@
+#include "charybdis.dtsi"
+#include "charybdis_trackball.dtsi"
+
+/ {
+    chosen {
+        zmk,kscan = &mock_kscan;
+    };
+
+    mock_kscan: kscan_1 {
+        compatible = "zmk,kscan-mock";
+        columns = <0>;
+        rows = <0>;
+        events = <0>;
+    };
+};
+
+// Enable the trackball listener on the central (dongle) side.
+// The split proxy (trackball_split) receives events relayed from the right peripheral.
+&trackball_listener {
+    status = "okay";
+};

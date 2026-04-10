@@ -1,0 +1,18 @@
+name: Draw keymap
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - config/charybdis.keymap
+      - docs/keymap/charybdis.yaml
+
+jobs:
+  draw:
+    uses: caksoylar/keymap-drawer/.github/workflows/draw-zmk.yml@main
+    with:
+      keymap_patterns: "config/charybdis.keymap"
+      output_folder: "docs/keymap"
+      parse_config: "docs/keymap/charybdis.yaml"
+    permissions:
+      contents: write

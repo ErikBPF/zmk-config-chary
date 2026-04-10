@@ -1,0 +1,5 @@
+if(CONFIG_ZMK_INPUT_PROCESSOR_IDLE_SUPPRESS)
+    zephyr_library_named(zmk_input_processor_idle_suppress)
+    zephyr_library_sources(src/input_processor_idle_suppress.c)
+    zephyr_library_include_directories(${APPLICATION_SOURCE_DIR}/include)
+endif()

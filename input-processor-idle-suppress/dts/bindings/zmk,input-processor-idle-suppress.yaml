@@ -1,0 +1,16 @@
+description: |
+  Suppress pointing device events when keyboard is active.
+  Drops all input events within `idle-timeout-ms` of the last keypress,
+  creating an effective dead zone during typing.
+
+compatible: "zmk,input-processor-idle-suppress"
+
+include: ip_one_param.yaml
+
+properties:
+  idle-timeout-ms:
+    type: int
+    required: true
+    description: |
+      Drop trackball events if a key was pressed within this many milliseconds.
+      Typical value: 150-300ms.
