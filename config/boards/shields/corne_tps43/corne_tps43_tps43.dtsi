@@ -1,0 +1,19 @@
+// TPS43 on unused Typeractive Corne nice!nano pins on either half:
+// D2 SDA, D3 SCL, D0 RST, D1 RDY, plus 3V3 and GND.
+&pro_micro_i2c {
+    status = "okay";
+
+    tps43_trackpad: iqs5xx@74 {
+        compatible = "azoteq,iqs5xx";
+        reg = <0x74>;
+        status = "okay";
+
+        reset-gpios = <&pro_micro 0 GPIO_ACTIVE_LOW>;
+        rdy-gpios = <&pro_micro 1 GPIO_ACTIVE_HIGH>;
+
+        scroll;
+        natural-scroll-y;
+        bottom-beta = <0>;
+        stationary-threshold = <0>;
+    };
+};

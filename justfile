@@ -32,7 +32,11 @@ build target:
         right)        {{dev}} west build -p -s zmk/app -d build/right        -b {{nano}} -- -DSHIELD=charybdis_right  -DZMK_CONFIG="{{config_dir}}" -DZMK_EXTRA_MODULES="{{extra_modules}}" ;;
         reset-xiao)   {{dev}} west build -p -s zmk/app -d build/reset-xiao   -b {{xiao}} -- -DSHIELD=settings_reset   -DZMK_CONFIG="{{config_dir}}" -DZMK_EXTRA_MODULES="{{extra_modules}}" ;;
         reset-nano)   {{dev}} west build -p -s zmk/app -d build/reset-nano   -b {{nano}} -- -DSHIELD=settings_reset   -DZMK_CONFIG="{{config_dir}}" -DZMK_EXTRA_MODULES="{{extra_modules}}" ;;
-        *) echo "Unknown target: {{target}}"; echo "Available: dongle-xiao dongle-nano left right reset-xiao reset-nano"; exit 1 ;;
+        tps43)        {{dev}} west build -p -s zmk/app -d build/tps43         -b {{nano}} -- -DSHIELD=tps43             -DZMK_CONFIG="{{config_dir}}" -DZMK_EXTRA_MODULES="{{extra_modules}};{{justfile_directory()}}/zmk-driver-azoteq-iqs5xx" ;;
+        corne-dongle) {{dev}} west build -p -s zmk/app -d build/corne-dongle -b {{nano}} -- -DSHIELD=corne_tps43_dongle -DZMK_CONFIG="{{config_dir}}" -DZMK_EXTRA_MODULES="{{extra_modules}};{{justfile_directory()}}/zmk-driver-azoteq-iqs5xx" ;;
+        corne-left)   {{dev}} west build -p -s zmk/app -d build/corne-left   -b {{nano}} -- -DSHIELD=corne_tps43_left  -DZMK_CONFIG="{{config_dir}}" -DZMK_EXTRA_MODULES="{{extra_modules}};{{justfile_directory()}}/zmk-driver-azoteq-iqs5xx" ;;
+        corne-right)  {{dev}} west build -p -s zmk/app -d build/corne-right  -b {{nano}} -- -DSHIELD=corne_tps43_right -DZMK_CONFIG="{{config_dir}}" -DZMK_EXTRA_MODULES="{{extra_modules}};{{justfile_directory()}}/zmk-driver-azoteq-iqs5xx" ;;
+        *) echo "Unknown target: {{target}}"; echo "Available: dongle-xiao dongle-nano left right reset-xiao reset-nano tps43 corne-dongle corne-left corne-right"; exit 1 ;;
     esac
     echo "Firmware: build/{{target}}/zephyr/zmk.uf2"
 

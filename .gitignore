@@ -28,6 +28,11 @@ firmware/
 .gsd/
 .bg-shell/
 
+# west-managed external modules (fetched by `west update`)
+prospector-zmk-module/
+zmk-driver-azoteq-iqs5xx/
+zmk-pmw3610-driver/
+
 # Nix
 devenv.lock
 result

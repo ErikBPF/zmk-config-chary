@@ -1,0 +1,38 @@
+#include <input/processors.dtsi>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+#include <dt-bindings/zmk/input_transform.h>
+#include "../../../tps43_parameters.h"
+
+// Unibody: touchpad is directly attached — no split proxy needed.
+
+/ {
+    idle_suppress: idle_suppress {
+        compatible = "zmk,input-processor-idle-suppress";
+        #input-processor-cells = <1>;
+        idle-timeout-ms = <TRACKBALL_IDLE_MS>;
+    };
+
+    touchpad_listener: touchpad_listener {
+        compatible = "zmk,input-listener";
+        status = "disabled";
+        device = <&tps43>;
+
+        // Default: suppress during typing, scale cursor
+        input-processors = <&idle_suppress TRACKBALL_IDLE_MS &zip_xy_scaler 1 CURSOR_DIVISOR>;
+
+        // RAISE / LOWER: scale native scroll events from 2-finger swipe
+        scroll_override: scroll_override {
+            layers = <RAISE LOWER>;
+            input-processors = <
+                &idle_suppress TRACKBALL_IDLE_MS
+                &zip_scroll_scaler 1 SCROLL_DIVISOR
+            >;
+        };
+
+        // SNIPE: precision cursor
+        snipe_override: snipe_override {
+            layers = <SNIPE_LAYER>;
+            input-processors = <&idle_suppress TRACKBALL_IDLE_MS &zip_xy_scaler 1 SNIPE_DIVISOR>;
+        };
+    };
+};

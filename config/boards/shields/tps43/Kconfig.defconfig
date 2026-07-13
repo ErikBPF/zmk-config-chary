@@ -1,0 +1,9 @@
+if SHIELD_TPS43
+
+config ZMK_KEYBOARD_NAME
+    default "TPS43"
+
+config ZMK_SPLIT
+    default n
+
+endif

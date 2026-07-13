@@ -1,0 +1,16 @@
+if SHIELD_CORNE_TPS43_DONGLE
+
+config ZMK_KEYBOARD_NAME
+    default "Corne TPS43"
+
+config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif
+
+if SHIELD_CORNE_TPS43_DONGLE || SHIELD_CORNE_TPS43_LEFT || SHIELD_CORNE_TPS43_RIGHT
+
+config ZMK_SPLIT
+    default y
+
+endif

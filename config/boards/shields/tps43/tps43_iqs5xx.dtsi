@@ -1,0 +1,36 @@
+#include "../../../tps43_parameters.h"
+
+// Azoteq TPS43 — IQS5xx capacitive touchpad over I2C.
+// FPC connector order:
+//   SDA → P0.17  pro_micro 2  (i2c0, fixed by pinctrl)
+//   SCL → P0.20  pro_micro 3  (i2c0, fixed by pinctrl)
+//   3V3 → VCC
+//   GND → GND
+//   RST → P0.08  pro_micro 0
+//   RDY → P0.06  pro_micro 1
+
+&i2c0 {
+    status = "okay";
+
+    tps43: iqs5xx@74 {
+        status = "okay";
+        compatible = "azoteq,iqs5xx";
+        reg = <0x74>;
+
+        reset-gpios = <&pro_micro 0 GPIO_ACTIVE_LOW>;   /* P0.08 */
+        rdy-gpios   = <&pro_micro 1 GPIO_ACTIVE_HIGH>;  /* P0.06 */
+
+        one-finger-tap;
+        two-finger-tap;
+        press-and-hold;
+        press-and-hold-time = <250>;
+
+        scroll;
+        natural-scroll-y;
+
+        flip-y;
+
+        bottom-beta = <5>;
+        stationary-threshold = <5>;
+    };
+};

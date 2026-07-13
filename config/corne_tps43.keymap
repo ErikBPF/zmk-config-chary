@@ -1,0 +1,2 @@
+// Corne has same 42 logical positions as Charybdis. Keep one shared keymap.
+#include "charybdis.keymap"
